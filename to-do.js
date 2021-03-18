@@ -1,27 +1,70 @@
-const ToDoForm = document.querySelector(".ToDoForm"),
-InputToDo = ToDoForm.querySelector('.InsertToDo'),
-ViewList = document.querySelector('.ListOfDo');
+const TodoForm = document.querySelector('.InsertListForm'),
+InputList = TodoForm.querySelector('input'),
+DisplayList = document.querySelector('.ToDoList');
 
-function attachToDo(text){
-    let li = document.createElement("li");
-    let delBtn = document.createElement("button");
-    let div = document.createElement("div");
-    delBtn.innerText = `✂`;
-    div.innerText = text;
-    li.appendChild(div);
-    li.appendChild(delBtn);
-    ViewList.appendChild(li);
+const ToDo = 'ToDo';
+let MyList = [];
+
+function saveList(){
+    localStorage.setItem(ToDo,JSON.stringify(MyList));
 }
 
-function handleSubmit(e){
+function DeleteList(e){
+    let btn = e.target;
+    let li = btn.parentNode.parentNode;
+    let clearList = MyList.filter(element => {
+        console.log(Number(element.id) ,Number(li.id));
+        return Number(element.id) !== Number(li.id);
+    })
+    DisplayList.removeChild(li); //display update
+
+    MyList = clearList;
+    saveList();
+}
+
+function InputListFunction(text){
+    let li = document.createElement('li');
+    let span = document.createElement('span');
+    let delbtn = document.createElement('button');
+    delbtn.innerText = '🎆';
+    delbtn.addEventListener('click',DeleteList)
+    span.innerText = text;
+    span.appendChild(delbtn);
+    li.appendChild(span);
+    DisplayList.appendChild(li);
+    let list_id = MyList.length + 1;
+    li.id = list_id;
+
+    let Object = {
+        id: list_id,
+        text
+    };
+    MyList.push(Object);
+    saveList();
+    console.log(localStorage.getItem(ToDo));
+    console.log(MyList);
+}
+
+function submitHnadle(e){
     e.preventDefault();
-    let CurValue = InputToDo.value;
-    attachToDo(CurValue);
-    InputToDo.value = ""; // clear
+    let curListString = InputList.value;
+    console.log(curListString);
+    InputListFunction(curListString);
+    InputList.value = "";
+}
+function HaveList(){
+    let NowToDo = localStorage.getItem(ToDo);
+    if(NowToDo !== null){
+        let JsonToDo = JSON.parse(NowToDo);
+        JsonToDo.forEach(element => {  
+            InputListFunction(element.text);
+        });
+    }
 }
 
 function init(){
-    ToDoForm.addEventListener("submit", handleSubmit)
+    HaveList();
+    TodoForm.addEventListener("submit", submitHnadle);
 }
 
 init();
