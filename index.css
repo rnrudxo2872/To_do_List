@@ -1,12 +1,30 @@
 body{
     background-color: #474644;
 }
-h1{
-    text-shadow: 1px 2px 3px bisque;
+.clock{
+    text-shadow: 3px 2px 3px gray;
+    color: white;
 }
 .showing{
     display: block;
 }
 .hide{
     display: none;
+}
+.showBG{
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    animation: fadeBG 0.5s linear;
+}
+@keyframes fadeBG{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
 }
