@@ -8,7 +8,7 @@ function getImage(num){
 }
 
 function init(){
-    let getNum = Math.floor(Math.random() * 8) + 1;
+    let getNum = Math.floor(Math.random() * 7) + 1;
     getImage(getNum);
 }
 

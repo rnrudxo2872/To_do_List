@@ -1,15 +1,41 @@
+@font-face{
+    font-family: NanumGothic;
+    src: url("./font/NanumGothic-Regular.ttf");
+}
+
 body{
     background-color: #474644;
+    font-family: NanumGothic;
+}
+main{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.placeName{
+    font-size: 1.6rem;
+    color: whitesmoke;
+    text-shadow: 1px 1px 1px black;
 }
 .clock{
     text-shadow: 3px 2px 3px gray;
     color: white;
+    font-size: 1.3rem;
+    letter-spacing: 3px;
+    padding: 10px 30px;
 }
-.showing{
-    display: block;
+input{
+    border: none;
+    border-bottom: 2px solid #474644;
+    text-align: center;
+    background-color: transparent;
 }
 .hide{
     display: none;
+}
+.showing{
+    display: block;
 }
 .showBG{
     position: absolute;
@@ -17,7 +43,8 @@ body{
     top: 0;
     left: 0;
     height: 100%;
-    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
     animation: fadeBG 0.5s linear;
 }
 @keyframes fadeBG{

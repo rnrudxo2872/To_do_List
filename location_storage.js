@@ -1,6 +1,7 @@
 const NameForm = document.querySelector(".Nameform"),
 InputText = NameForm.querySelector(".InsertName"),
-PlaceName = document.querySelector(".placeName");
+PlaceName = document.querySelector(".placeName"),
+ListForm = document.querySelector(".InsertListForm");
 
 const NameStorage = 'CURUSER',
 Toshow = 'showing',
@@ -20,9 +21,10 @@ function getName(){
 }
 
 function showName(){
-    NameForm.classList.add(Tohide);
-    PlaceName.classList.remove(Tohide);
+    NameForm.classList.remove(Toshow);
     PlaceName.classList.add(Toshow);
+    ListForm.classList.add(Toshow);
+
     PlaceName.innerText = localStorage.getItem(NameStorage);
 }
 
