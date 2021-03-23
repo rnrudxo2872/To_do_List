@@ -16,7 +16,11 @@ function DeleteList(e){
         console.log(Number(element.id) ,Number(li.id));
         return Number(element.id) !== Number(li.id);
     })
-    DisplayList.removeChild(li); //display update
+    li.classList.add("remove-item"); // remove animation
+    console.log(li);
+    setTimeout(function () {
+        DisplayList.removeChild(li); //display update
+      }, 900);
 
     MyList = clearList;
     saveList();
@@ -26,12 +30,18 @@ function InputListFunction(text){
     let li = document.createElement('li');
     let span = document.createElement('span');
     let delbtn = document.createElement('button');
-    delbtn.innerText = '🎆';
+    delbtn.innerText = '♦';
     delbtn.addEventListener('click',DeleteList)
     span.innerText = text;
     span.appendChild(delbtn);
     li.appendChild(span);
     DisplayList.appendChild(li);
+
+    li.classList.add("animation-init");
+    setTimeout(function () {
+        li.classList.add("animation-fade"); // animation
+      }, 30);
+
     let list_id = MyList.length + 1;
     li.id = list_id;
 

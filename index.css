@@ -30,6 +30,14 @@ input{
     border-bottom: 2px solid #474644;
     text-align: center;
     background-color: transparent;
+    transition: all 0.3s ease-out;
+    color: blanchedalmond;
+    text-shadow: 2px 2px 2px gray;
+    font-size: 25px;
+}
+input:focus{
+    outline: none;
+    transform: translateY(-5px);
 }
 .hide{
     display: none;
@@ -42,6 +50,12 @@ input{
     text-shadow: 1px 2px 2px grey;
     z-index: 1;
 }
+.ToDoList{
+    color: blanchedalmond;
+    text-shadow: 2px 2px 2px gray;
+    font-size: 20px;
+    animation: fadeBG 1s linear;
+}
 .showBG{
     position: absolute;
     z-index: -1;
@@ -51,6 +65,21 @@ input{
     min-width: 100%;
     max-width: 100%;
     animation: fadeBG 0.5s linear;
+}
+.animation-init {
+    opacity: 0;
+    padding-top: 1em;
+}
+
+.animation-fade {
+    opacity: 1;
+    padding-top: 0;
+    transition: all 1s;
+}
+.remove-item{
+    opacity: 0;
+    padding-top: 0;
+    transition: all 1s;
 }
 @keyframes fadeBG{
     from{
