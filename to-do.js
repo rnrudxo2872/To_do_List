@@ -13,7 +13,6 @@ function DeleteList(e){
     let btn = e.target;
     let li = btn.parentNode.parentNode;
     let clearList = MyList.filter(element => {
-        console.log(Number(element.id) ,Number(li.id));
         return Number(element.id) !== Number(li.id);
     })
     li.classList.add("remove-item"); // remove animation

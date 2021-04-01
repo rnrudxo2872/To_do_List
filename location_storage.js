@@ -25,7 +25,8 @@ function showName(){
     PlaceName.classList.add(Toshow);
     ListForm.classList.add(Toshow);
 
-    PlaceName.innerText = localStorage.getItem(NameStorage);
+    PlaceName.innerText = localStorage.getItem(NameStorage) + `님 반갑습니다!
+    오늘의 목표는 뭔가요?`;
 }
 
 function LoadingName(){
